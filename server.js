@@ -100,7 +100,7 @@ ProtectedRoutes.get('/getXML', (req, res)=>{
 
 ProtectedRoutes.get('/getJson', (req, res)=>{
     console.log(JSON.stringify(req.headers));
-    res.status(200).json({"DigitalIDStatus":"999999:active,111111:barred","DigitalIDCount": "2"});
+    res.status(200).json({"DigitalIDStatus":"999999:active,111111:barred","DigitalIDCount": "91"});
 });
 
 app.get('/getXml', (req, res)=>{
@@ -160,8 +160,16 @@ BasicAuthRoutes.get('/getXml', (req, res)=>{
 });
 
 BasicAuthRoutes.get('/getJson', (req, res)=>{
+    console.log(JSON.stringify(req.query));
     console.log(JSON.stringify(req.headers));
     res.status(200).json({"DigitalIDStatus":"999999:active,999999:barred","DigitalIDCount": "9"});
+});
+
+BasicAuthRoutes.post('/postJson', (req, res)=>{
+    console.log(JSON.stringify(req.query));
+    console.log(JSON.stringify(req.headers));
+    console.log(JSON.stringify(req.body));
+    res.status(200).json({"DigitalIDStatus":"88888888:active,88888888:barred","DigitalIDCount": "8"});
 });
 
 http.createServer(app).listen(port);
