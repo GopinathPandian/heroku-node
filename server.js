@@ -55,10 +55,10 @@ app.post('/getToken', function(req, res){
 ProtectedRoutes.use((req, res, next) =>{
     // check header or url parameters or post parameters for token
     var bearerToken = req.headers['authorization'];
-    var token = bearerToken.split(" ")[1];
-  
+    
     // decode token
-    if (token) {
+    if (bearerToken) {
+        var token = bearerToken.split(" ")[1];
       // verifies secret and checks exp
       jwt.verify(token, app.get('Secret'), (err, decoded) =>{      
         if (err) {
