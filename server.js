@@ -172,5 +172,12 @@ BasicAuthRoutes.post('/postJson', (req, res)=>{
     res.status(200).json({"DigitalIDStatus":"88888888:active,88888888:barred","DigitalIDCount": "8"});
 });
 
+BasicAuthRoutes.post('/makePayment', (req, res)=>{
+    console.log(JSON.stringify(req.query));
+    console.log(JSON.stringify(req.headers));
+    console.log(JSON.stringify(req.body));
+    res.status(200).json({"message":"Success"});
+});
+
 http.createServer(app).listen(port);
 console.log('Our app is running on http://localhost:' + port);
