@@ -3,16 +3,20 @@ var express = require('express');
 var app = express();
 var jwt    = require('jsonwebtoken');
 var http = require('http');
-var https = require('https');
+// var https = require('https');
 var bodyParser = require("body-parser");
-var privateKey  = fs.readFileSync('certs/server.key', 'utf8');
-var certificate = fs.readFileSync('certs/server.crt', 'utf8');
 
-var credentials = {key: privateKey, cert: certificate};
+// var privateKey  = fs.readFileSync('certs/GopiCA.key');
+// var certificate = fs.readFileSync('certs/GopiCA.pem');
+
+// var privateKey  = fs.readFileSync('certs/server.key');
+// var certificate = fs.readFileSync('certs/server.crt');
+
+// var credentials = {key: privateKey, cert: certificate};
 // set the port of our application
 // process.env.PORT lets the port be set by Heroku
 var port = process.env.PORT || 8080;
-var httpsPort = process.env.PORT || 8443;
+var httpsPort = process.env.PORT || 8443;;
 var secret = "BrickbyBrick";
 var user = {
     first_name: 'Designer',
@@ -188,6 +192,6 @@ BasicAuthRoutes.post('/makePayment', (req, res)=>{
 });
 
 http.createServer(app).listen(port);
-https.createServer(credentials, app).listen(httpsPort);
+// https.createServer(credentials, app).listen(httpsPort);
 console.log('Our app is running on http://localhost:' + port);
-console.log('Our app is running on https://localhost:' + port);
+// console.log('Our app is running on https://localhost:' + httpsPort);
